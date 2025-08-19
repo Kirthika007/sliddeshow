@@ -1,162 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Why You Should Make Me Your GF 💕</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Slideshow</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: "Comic Sans MS", cursive, sans-serif;
-      background: pink;
-      overflow: hidden;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
     }
-    .slideshow {
+    .slideshow-container {
       position: relative;
-      width: 100vw;
-      height: 100vh;
+      max-width: 600px;
+      margin: 50px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
     .slide {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(135deg, #ffc0cb, #ffb6c1, #ff69b4);
-      color: #fff;
-      padding: 20px;
-      font-size: 2rem;
-      opacity: 0;
-      transition: opacity 0.8s ease;
+      display: none;
     }
     .slide.active {
-      opacity: 1;
-      z-index: 1;
+      display: block;
     }
-    .slide img {
-      max-width: 350px;
-      max-height: 350px;
-      margin: 20px 0;
-      border-radius: 20px;
-      box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
-    }
-    .next-btn, #yesBtn, #noBtn, #pleaseBtn {
-      margin-top: 20px;
-      padding: 12px 30px;
-      font-size: 1rem;
-      background: #ff1493;
-      color: white;
+    button {
+      margin: 10px;
+      padding: 10px 20px;
       border: none;
-      border-radius: 30px;
+      border-radius: 8px;
       cursor: pointer;
-      transition: 0.3s;
+      font-size: 16px;
     }
-    .next-btn:hover, #yesBtn:hover, #noBtn:hover, #pleaseBtn:hover {
-      background: #ff69b4;
+    .accept {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .reject {
+      background-color: #f44336;
+      color: white;
+    }
+    .next-btn {
+      background-color: #2196F3;
+      color: white;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-top: 15px;
     }
   </style>
 </head>
 <body>
-  <div class="slideshow">
+  <div class="slideshow-container">
+    
     <!-- Slide 1 -->
     <div class="slide active">
-      <h1>Why you should make me your gf 💔</h1>
-      <img src="https://media.istockphoto.com/id/2007286604/photo/little-girl-with-a-sad-face-drawing-of-a-unhappy-frown-sad-people.jpg?b=1&s=612x612&w=0&k=20&c=a6GPldB-rBc17LpA03G_A4GZLG-7zKomWftvDcxgdQo=" alt="Sad big emoji">
-      <img src="https://gifdb.com/images/high/begging-little-girl-43lcde4b3bxvsfp3.gif" alt="Girl begging silhouette">
-      <button class="next-btn">Next ➡️</button>
+      <h2>Will you accept me? ❤️</h2>
+      <button class="accept" onclick="goToSlide(1)">Yes</button>
+      <button class="reject" onclick="nextSlide()">No</button>
     </div>
 
     <!-- Slide 2 -->
     <div class="slide">
-      <h1>#1 I will make you laugh and will laugh at your jokes 😂</h1>
-      <img src="https://media.istockphoto.com/id/1362893117/video/portrait-of-woman-laughing-out-loud-chuckling-giggling-at-amusing-anecdote-sincere-emotion.jpg?s=640x640&k=20&c=fuOlcCwbGQKxebPOkaKXXqLlYX1F8g6zj94i3WG3G2s=" alt="Laughing girl">
-      <button class="next-btn">Next ➡️</button>
+      <h2>Think again... 🤔</h2>
+      <button class="accept" onclick="goToSlide(3)">Okay fine</button>
+      <button class="reject" onclick="nextSlide()">Still No</button>
     </div>
 
     <!-- Slide 3 -->
     <div class="slide">
-      <h1>#2 I will watch Barcelona matches w you ⚽❤️💙</h1>
-      <img src="https://i.pinimg.com/originals/2b/76/7c/2b767c0a0d05fe01b406bbe7c647e2e2.jpg" alt="Barcelona fangirl">
-      <button class="next-btn">Next ➡️</button>
+      <h2>Last chance 🥺</h2>
+      <button class="accept" onclick="goToSlide(5)">I Accept</button>
+      <button class="reject" onclick="goToSlide(4)">No I don’t accept</button>
     </div>
 
-    <!-- Slide 4 -->
+    <!-- Slide 4 (Just say you hate me) -->
     <div class="slide">
-      <h1>#3 We can make other couples jealous by being slim thicc 😏</h1>
-      <img src="https://thumbs.dreamstime.com/b/young-man-looking-nice-girl-passing-red-head-jealous-turning-men-head-away-44059167.jpg" alt="Jealous couple">
-      <button class="next-btn">Next ➡️</button>
+      <h2>Just say you hate me 💔</h2>
+      <img src="https://preview.redd.it/post-the-best-cat-memes-you-got-in-the-comments-please-v0-d2yo85ycvste1.jpeg?width=736&auto=webp&s=3c44de827d53a6804a63a1dd4bd2545d27d5d045" alt="Cat Meme"/>
+      <button class="accept" onclick="goToSlide(5)">Please Accept</button>
     </div>
 
-    <!-- Slide 5 -->
+    <!-- Slide 5 (Final) -->
     <div class="slide">
-      <h1>#4 We can cuddle and have sex everyday (dw I will not peg you) 😉</h1>
-      <img src="https://static.vecteezy.com/system/resources/thumbnails/012/555/452/small/baby-cat-sleeping-ginger-kitten-on-couch-under-knitted-blanket-two-cats-cuddling-and-hugging-domestic-animal-sleep-and-cozy-nap-time-home-pet-young-kittens-cute-funny-cats-at-home-photo.jpg" alt="Cuddling cats">
-      <button class="next-btn">Next ➡️</button>
+      <h2>I knew it 😘</h2>
     </div>
 
-    <!-- Slide 6 -->
-    <div class="slide">
-      <h1>#5 I will teach you how to eat with hands in banana leaf 🍃🍛</h1>
-      <img src="https://www.shutterstock.com/image-photo/onam-sadhya-indian-women-eating-260nw-1933499117.jpg" alt="Onam sadhya">
-      <button class="next-btn">Next ➡️</button>
-    </div>
-
-    <!-- Slide 7 -->
-    <div class="slide">
-      <h1>Will you accept me as your GF? 🥺💕</h1>
-      <button id="yesBtn">✅ Yes, I Accept</button>
-      <button id="noBtn">❌ No, I Don’t Accept</button>
-    </div>
-
-    <!-- Slide 8 -->
-    <div class="slide">
-      <h1>Just say you hate me 😭</h1>
-      <img src="https://preview.redd.it/post-the-best-cat-memes-you-got-in-the-comments-please-v0-d2yo85ycvste1.jpeg?width=736&auto=webp&s=3c44de827d53a6804a63a1dd4bd2545d27d5d045" 
-           alt="Sad cat meme" style="max-width:400px; border-radius:15px; margin:20px;">
-      <button id="pleaseBtn">🙏 Please Accept</button>
-    </div>
-
-    <!-- Slide 9 -->
-    <div class="slide">
-      <h1>I knew it ❤️</h1>
-    </div>
+    <!-- Navigation -->
+    <button class="next-btn" onclick="nextSlide()">Next ➡️</button>
   </div>
 
-<script>
-  const slides = document.querySelectorAll(".slide");
-  const nextBtns = document.querySelectorAll(".next-btn");
-  let currentIndex = 0;
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slide");
 
-  function showSlide(index) {
-    slides[currentIndex].classList.remove("active");
-    currentIndex = index;
-    slides[currentIndex].classList.add("active");
-  }
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+      });
+      currentSlide = index;
+    }
 
-  // Handle normal Next buttons
-  nextBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      if (currentIndex < slides.length - 1) {
-        showSlide(currentIndex + 1);
+    function nextSlide() {
+      if (currentSlide < slides.length - 1) {
+        showSlide(currentSlide + 1);
       }
-    });
-  });
+    }
 
-  // Handle Yes/No/Please buttons
-  document.getElementById("yesBtn").addEventListener("click", () => {
-    showSlide(8); // Slide 9
-  });
-
-  document.getElementById("noBtn").addEventListener("click", () => {
-    showSlide(7); // Slide 8
-  });
-
-  document.getElementById("pleaseBtn").addEventListener("click", () => {
-    showSlide(8); // Slide 9
-  });
-</script>
-
+    function goToSlide(index) {
+      if (index >= 0 && index < slides.length) {
+        showSlide(index);
+      }
+    }
+  </script>
 </body>
 </html>
