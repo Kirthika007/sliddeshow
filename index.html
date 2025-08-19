@@ -103,26 +103,49 @@
       <button class="next-btn">Next ➡️</button>
     </div>
 
-    <!-- Slide 7 -->
-    <div class="slide">
-      <h1>Please accept me 🙏💕</h1>
-      <img src="https://media.tenor.com/0tr94B9XWQwAAAAM/cute-baby.gif" alt="Begging cute baby">
-      <button class="next-btn">💌 Yes, I accept! 💌</button>
-    </div>
-  </div>
+   <!-- Slide 7 (Yes/No choice) -->
+<div class="slide">
+  <h1>Will you accept me as your GF? 🥺💕</h1>
+  <button id="yesBtn">✅ Yes, I Accept</button>
+  <button id="noBtn">❌ No, I Don’t Accept</button>
+</div>
 
-  <script>
-    const slides = document.querySelectorAll(".slide");
-    const buttons = document.querySelectorAll(".next-btn");
-    let current = 0;
+<!-- Slide 8 (Guilt-trip slide) -->
+<div class="slide">
+  <h1>Just say you hate me 😭</h1>
+  <img src="https://preview.redd.it/post-the-best-cat-memes-you-got-in-the-comments-please-v0-d2yo85ycvste1.jpeg?width=736&auto=webp&s=3c44de827d53a6804a63a1dd4bd2545d27d5d045" 
+       alt="Sad cat meme" style="max-width:400px; border-radius:15px; margin:20px;">
+  <button id="pleaseBtn">🙏 Please Accept</button>
+</div>
 
-    buttons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        slides[current].classList.remove("active");
-        current = (current + 1) % slides.length;
-        slides[current].classList.add("active");
-      });
-    });
-  </script>
+<!-- Slide 9 (Final slide) -->
+<div class="slide">
+  <h1>I knew it ❤️</h1>
+</div>
+
+<script>
+  const slides = document.querySelectorAll(".slide");
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    slides[currentIndex].classList.remove("active");
+    currentIndex = index;
+    slides[currentIndex].classList.add("active");
+  }
+
+  document.getElementById("yesBtn").addEventListener("click", () => {
+    showSlide(8); // jump to Slide 9
+  });
+
+  document.getElementById("noBtn").addEventListener("click", () => {
+    showSlide(7); // jump to Slide 8
+  });
+
+  document.getElementById("pleaseBtn").addEventListener("click", () => {
+    showSlide(8); // jump to Slide 9
+  });
+</script>
+
 </body>
 </html>
+
